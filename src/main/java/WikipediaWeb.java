@@ -22,8 +22,30 @@ public class WikipediaWeb {
 
         WebDriver driver;
         driver = new ChromeDriver();
-        driver.get("https://www.tradera.com/");
+        driver.get("https://sv.wikipedia.org/wiki/Sverige");
+
 
         System.out.println(driver.getTitle());
+
+        System.out.println(driver.getTitle());
+        System.out.println(driver.getCurrentUrl());
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
+        Thread.sleep(3000);
+
+        WebElement searchBox = driver.findElement(By.name("search"));
+        WebElement searchButton = driver.findElement(By.name("go"));
+        searchBox.sendKeys("Norge");
+
+        System.out.println(searchBox.getAttribute("value"));
+
+        searchBox.click();
+
+        searchButton.getText();
+        searchBox = driver.findElement(By.name("search"));
+        searchBox.getAttribute("value");
+
+
+        driver.quit();
     }
 }
